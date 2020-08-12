@@ -16,7 +16,7 @@
 
   --version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display version information.
   
-**migration:**   
+**migration:**
   -d, --directory &nbsp;&nbsp;&nbsp;Required. The path to directory where SQL scripts are
                        stored.
 

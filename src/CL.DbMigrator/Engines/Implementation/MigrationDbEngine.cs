@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using CLI.DbMigrator.Loggers;
 using CLI.DbMigrator.Options;
 using DbUp;
@@ -10,6 +11,9 @@ namespace CLI.DbMigrator.Engines.Implementation
     /// <inheritdoc cref="IDbEngine"/>
     public class MigrationDbEngine : IDbEngine
     {
+        private const string SQL_SCHEMA = "dbo";
+        private const string JOURNAL_TABLE = "SchemaVersions";
+
         private readonly ILogger<MigrationDbEngine> _logger;
 
         private MigrationOptions Options { get; set; }
@@ -41,11 +45,16 @@ namespace CLI.DbMigrator.Engines.Implementation
         /// <inheritdoc />
         public void Execute()
         {
+            if (!Directory.Exists(Options.Directory))
+            {
+                throw new DirectoryNotFoundException($"The directory {Options.Directory} is not exist.");
+            }
+            
             var dbDeploy = DeployChanges
                 .To
                 .SqlDatabase(Options.ConnectionString)
                 .LogTo(new DbEngineLogger<MigrationDbEngine>(_logger))
-                .JournalToSqlTable("dbo", "SchemaVersions")
+                .JournalToSqlTable(SQL_SCHEMA, JOURNAL_TABLE)
                 .WithScriptsFromFileSystem(Options.Directory, new FileSystemScriptOptions
                 {
                     IncludeSubDirectories = true

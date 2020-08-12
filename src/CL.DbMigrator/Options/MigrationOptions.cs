@@ -2,7 +2,7 @@ using CommandLine;
 
 namespace CLI.DbMigrator.Options
 {
-    [Verb("migration", true, HelpText = "Adds changes to the database.")]
+    [Verb("migration", HelpText = "Adds changes to the database.")]
     public sealed class MigrationOptions : BaseOptions
     {
         [Option('d', "directory", Required = true, HelpText = "The path to directory where SQL scripts are stored.")]

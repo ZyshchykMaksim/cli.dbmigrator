@@ -18,6 +18,16 @@
 
   --version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display version information.
   
+```
+ /* 
+ * Example:
+ * Run cmd.exe or PowerShell
+ */ 
+ 
+ cli.dbmigrator help
+ cli.dbmigrator try-connect -c "Server=(localdb)\MSSQLLocalDB; Database=LD_TEST; Trusted_connection=true;"
+```
+
 #**migration:**
 
   -d, --directory &nbsp;&nbsp;&nbsp;Required. The path to directory where SQL scripts are
@@ -31,3 +41,13 @@
   --help &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display this help screen.
 
   --version &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Display version information.
+
+```
+ /* 
+ * Example:
+ * Run cmd.exe or PowerShell
+ */ 
+ 
+ cli.dbmigrator help
+ cli.dbmigrator migration -c "Server=(localdb)\MSSQLLocalDB; Database=LD_TEST; Trusted_connection=true;" -d "C:\SQL_SCRIPTS"
+```
